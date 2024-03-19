@@ -11,8 +11,10 @@ const std::string FLOAT_TERMINAL = "float";
 const std::string BOOL_TERMINAL = "bool";
 const std::string CONST_TERMINAL = "CONST";
 const std::string NOC_TERMINAL = "NOC";
+const std::string VAR_TERMINAL = "VAR";
+const std::string RAV_TERMINAL = "RAV";
 
-const std::set<std::string> RESERVED_WORDS = { DOUBLE_TERMINAL, INT_TERMINAL, STRING_TERMINAL, CHAR_TERMINAL, FLOAT_TERMINAL, BOOL_TERMINAL, CONST_TERMINAL, NOC_TERMINAL };
+const std::set<std::string> RESERVED_WORDS = { DOUBLE_TERMINAL, INT_TERMINAL, STRING_TERMINAL, CHAR_TERMINAL, FLOAT_TERMINAL, BOOL_TERMINAL, CONST_TERMINAL, NOC_TERMINAL, VAR_TERMINAL };
 
 bool TYPEParse(std::string& code)
 {
@@ -116,7 +118,6 @@ bool CONSTSECTIONSParse(std::string& code)
 			return false;
 		}
 	}
-
 	return true;
 	//if (!((CONSTSECTIONParse(code) && code[0] == ';' && CONSTSECTIONSParse(code)) || CONSTSECTIONParse(code)))
 	//{
@@ -163,8 +164,103 @@ bool CONSTParse(std::string& code)
 	return true;
 }
 
+bool IDENTLISTParse(std::string& code)
+{
+	if (!IDENTParse(code))
+	{
+		// error
+		return false;
+	}
+	if (code[0] == ',')
+	{
+		code.erase(0, 1);
+		if (!IDENTLISTParse(code))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+bool DCLSSECTIONParse(std::string& code)
+{
+	if (!IDENTLISTParse(code))
+	{
+		// error
+		return false;
+	}
+	if (code[0] != ':')
+	{
+		// errror
+		return false;
+	}
+	code.erase(0, 1);
+	if (!TYPEParse(code))
+	{
+		//error
+		return false;
+	}
+	return true;
+}
+
+bool DCLSSECTIONSParse(std::string& code)
+{
+	if (!DCLSSECTIONParse(code))
+	{
+		// error
+		return false;
+	}
+	if (code[0] == ';')
+	{
+		code.erase(0, 1);
+		if (code.substr(0, 1) != "\n")
+		{
+			return false;
+		}
+		code.erase(0, 1);
+		if (!DCLSSECTIONSParse(code))
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
 bool VARParse(std::string& code)
 {
+	if (code.substr(0, 3) != VAR_TERMINAL)
+	{
+		// error
+		return false;
+	}
+	code.erase(0, 3);
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
+	if (!DCLSSECTIONSParse(code))
+	{
+		// error
+		return false;
+	}
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
+	if (code.substr(0, 3) != RAV_TERMINAL)
+	{
+		// error
+		return false;
+	}
+	code.erase(0, 3);
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
 	return true;
 }
 

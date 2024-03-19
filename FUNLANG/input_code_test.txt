@@ -3,4 +3,8 @@ CONST
     lol : double =;
     ds : int = 
 NOC
+VAR
+    a, b, c : string;
+    de, l : int
+RAV
 NUF
