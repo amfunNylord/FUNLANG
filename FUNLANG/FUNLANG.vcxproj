@@ -138,6 +138,10 @@
     <ClInclude Include="FUNLanguageParser.h" />
     <ClInclude Include="ListstmntsParser.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input_code.txt" />
+    <Text Include="input_code_test.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

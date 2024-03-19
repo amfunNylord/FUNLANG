@@ -36,4 +36,8 @@
       <Filter>Checking</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="input_code.txt" />
+    <Text Include="input_code_test.txt" />
+  </ItemGroup>
 </Project>

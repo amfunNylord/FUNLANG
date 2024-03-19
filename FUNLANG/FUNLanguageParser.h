@@ -2,6 +2,7 @@
 #include <string>
 
 #include "ListstmntsParser.h"
+#include "DCLSParser.h"
 
 const std::string FUN_TERMINAL = "FUN";
 const std::string MAIN_TERMINAL = "MAIN";
@@ -23,11 +24,17 @@ bool FUNLanguageParse(std::string code)
 	}
 	code.erase(0, 4);
 
-	//if (!DCLSParse(code))
-	//{
-	//	// print error
-	//	return false;
-	//}
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
+
+	if (!DCLSParse(code))
+	{
+		// print error
+		return false;
+	}
 	if (!ListstmntsParse(code))
 	{
 		// print error
@@ -40,6 +47,11 @@ bool FUNLanguageParse(std::string code)
 		return false;
 	}
 	code.erase(0, 3);
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
 
 	if (code.empty())
 	{

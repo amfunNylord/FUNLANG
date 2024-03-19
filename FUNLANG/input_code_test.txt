@@ -1,2 +1,6 @@
 FUN MAIN
+CONST
+    lol : double =;
+    ds : int = 
+NOC
 NUF
