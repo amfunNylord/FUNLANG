@@ -7,4 +7,10 @@ VAR
     a, b, c : string;
     de, l : int
 RAV
+BEGIN
+{
+    ;
+}
+    ;
+END
 NUF

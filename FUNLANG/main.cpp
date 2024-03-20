@@ -5,9 +5,10 @@
 
 const std::string inputFileName = "input_code_test.txt";
 
-void DeleteSpaces(std::string& line)
+void DeleteSpacesAndTabs(std::string& line)
 {
 	line.erase(remove(line.begin(), line.end(), ' '), line.end());
+	line.erase(remove(line.begin(), line.end(), '\t'), line.end());
 }
 
 int main()
@@ -22,7 +23,7 @@ int main()
 		code += '\n';
 	}
 
-	DeleteSpaces(code);
+	DeleteSpacesAndTabs(code);
 
 	if (!FUNLanguageParse(code))
 	{

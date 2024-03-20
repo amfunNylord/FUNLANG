@@ -7,6 +7,8 @@
 const std::string FUN_TERMINAL = "FUN";
 const std::string MAIN_TERMINAL = "MAIN";
 const std::string NUF_TERMINAL = "NUF";
+const std::string BEGIN_TERMINAL = "BEGIN";
+const std::string END_TERMINAL = "END";
 
 bool FUNLanguageParse(std::string code)
 {
@@ -35,12 +37,33 @@ bool FUNLanguageParse(std::string code)
 		// print error
 		return false;
 	}
-	if (!ListstmntsParse(code))
+	if (code.substr(0, 5) != BEGIN_TERMINAL)
+	{
+		//print error
+		return false;
+	}
+	code.erase(0, 5);
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
+	if (!LISTSTMNTSParse(code))
 	{
 		// print error
 		return false;
 	}
-
+	if (code.substr(0, 3) != END_TERMINAL)
+	{
+		// print error
+		return false;
+	}
+	code.erase(0, 3);
+	if (code.substr(0, 1) != "\n")
+	{
+		return false;
+	}
+	code.erase(0, 1);
 	if (code.substr(0, 3) != NUF_TERMINAL)
 	{
 		// print error
