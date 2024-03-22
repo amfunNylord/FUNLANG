@@ -35,6 +35,9 @@
     <ClInclude Include="ListstmntsParser.h">
       <Filter>Checking</Filter>
     </ClInclude>
+    <ClInclude Include="ReadAndWriteParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_code.txt" />
