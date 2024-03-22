@@ -1,6 +1,6 @@
 FUN MAIN
 CONST
-    lol : double =;
+    _ : double =;
     ds : int = 
 NOC
 VAR

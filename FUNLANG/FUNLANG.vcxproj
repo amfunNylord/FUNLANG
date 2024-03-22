@@ -135,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DCLSParser.h" />
+    <ClInclude Include="EXPRParse.h" />
     <ClInclude Include="FUNLanguageParser.h" />
     <ClInclude Include="ListstmntsParser.h" />
   </ItemGroup>

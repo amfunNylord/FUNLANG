@@ -30,10 +30,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DCLSParser.h">
-      <Filter>NeedToRemake</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ListstmntsParser.h">
-      <Filter>Checking</Filter>
+      <Filter>NeedToRemake</Filter>
+    </ClInclude>
+    <ClInclude Include="EXPRParse.h">
+      <Filter>NeedToRemake</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
