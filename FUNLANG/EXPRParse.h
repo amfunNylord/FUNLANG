@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "DCLSParser.h"
 
 const char EQUAL = '=';
 const char LESS = '<';
@@ -61,7 +62,102 @@ bool RELATIONParse(std::string& code)
 	return false;
 }
 
+bool TERMParse(std::string& code)
+{
+	TERMParse(code);
+	MULParse(code);
+	if (!FParse(code))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool SIMPLEEXPRParse(std::string& code)
+{
+	SIMPLEEXPRParse(code);
+	PLUSParse(code);
+	if (!TERMParse(code))
+	{
+		return false;
+	}
+	return true;
+}
+
+bool INTParse(std::string& code)
+{
+	int i = 0;
+	std::string value;
+	while (isdigit(code[i]))
+	{
+		value += code[i++];
+	}
+	size_t valueLen = value.size();
+	code.erase(0, valueLen);
+	return valueLen != 0;
+}
+
+bool DOUBLEParse(std::string& code)
+{
+
+}
+
+bool FLOATParse(std::string& code)
+{
+	int i = 0;
+	std::string value;
+	if (code[0])
+}
+
+bool NUMBParse(std::string& code)
+{
+
+}
+
+bool FParse(std::string& code)
+{
+	if (IDENTParse(code))
+	{
+		return true;
+	}
+	if (NUMBParse(code))
+	{
+		return true;
+	}
+	if (code[0] == '-')
+	{
+		code.erase(0, 1);
+		return FParse(code);
+	}
+	if (code[0] == '(')
+	{
+		code.erase(0, 1);
+		if (!SIMPLEEXPRParse(code))
+		{
+			return false;
+		}
+		if (code[0] != ')')
+		{
+			return false;
+		}
+		code.erase(0, 1);
+		return true;
+	}
+	if (code.substr(0, 3) == "not")
+	{
+		code.erase(0, 3);
+		return FParse(code);
+	}
+	return false;
+}
+
 bool EXPRParse(std::string& code)
 {
+	EXPRParse(code);
+	RELATIONParse(code);
+	if (!SIMPLEEXPRParse(code))
+	{
+		return false;
+	}
 	return true;
 }
