@@ -61,11 +61,18 @@ bool IDENTParse(std::string& code)
 	{
 		identifier += code[i++];
 	}
+
 	if (RESERVED_WORDS.contains(identifier))
 	{
 		//error
 		return false;
 	}
+
+	if (identifier.empty())
+	{
+		return false;
+	}
+
 	code.erase(0, identifier.size());
 	if (identifier.empty())
 	{

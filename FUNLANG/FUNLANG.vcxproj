@@ -138,6 +138,7 @@
     <ClInclude Include="EXPRParse.h" />
     <ClInclude Include="FUNLanguageParser.h" />
     <ClInclude Include="ListstmntsParser.h" />
+    <ClInclude Include="ReadAndWriteParser.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_code.txt" />
