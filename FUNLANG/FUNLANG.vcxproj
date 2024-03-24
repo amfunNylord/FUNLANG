@@ -136,9 +136,12 @@
   <ItemGroup>
     <ClInclude Include="DCLSParser.h" />
     <ClInclude Include="EXPRParse.h" />
+    <ClInclude Include="ForParser.h" />
     <ClInclude Include="FUNLanguageParser.h" />
+    <ClInclude Include="IFParser.h" />
     <ClInclude Include="ListstmntsParser.h" />
     <ClInclude Include="ReadAndWriteParser.h" />
+    <ClInclude Include="WhileParser.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_code.txt" />
