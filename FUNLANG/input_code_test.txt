@@ -1,7 +1,7 @@
 FUN MAIN
 CONST
-    _ : double =;
-    ds : int = 
+    ab : int = 23;
+    ds : int = 3
 NOC
 VAR
     a, b, c : string;

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <set>
+#include "EXPRParse.h"
 
 const std::string INT_TERMINAL = "int";
 const std::string DOUBLE_TERMINAL = "double";
@@ -66,6 +67,10 @@ bool IDENTParse(std::string& code)
 		return false;
 	}
 	code.erase(0, identifier.size());
+	if (identifier.empty())
+	{
+		return false;
+	}
 	return true;
 }
 
@@ -93,7 +98,10 @@ bool CONSTSECTIONParse(std::string& code)
 		return false;
 	}
 	code.erase(0, 1);
-	// ParseExpr
+	if (!EXPRParse(code))
+	{
+		return false;
+	}
 	return true;
 }
 
