@@ -1,10 +1,11 @@
 #pragma once
 #include <iostream>
-
+#include "ExpressionParser.h"
 const std::string IF_TERMINAL = "IF(";
 const std::string THEN_TERMINAL = "THEN";
 const std::string ELSE_TERMINAL = "ELSE";
 const std::string FI_TERMINAL = "FI";
+const std::string CLOSED_BRACKET_TERMINAL = ")";
 
 bool IFParse(std::string& str)
 {
@@ -15,15 +16,16 @@ bool IFParse(std::string& str)
 
 	str.erase(0, IF_TERMINAL.length());
 
-	size_t positionThen = str.find(THEN_TERMINAL);
-	if (positionThen == std::string::npos) return false;
+	size_t positionCloseBracket = str.find(CLOSED_BRACKET_TERMINAL);
+	if (positionCloseBracket == std::string::npos)
+		return false;
 
-	std::string code = str.substr(0, positionThen);
-	if (!EXPRParse(code))
+	std::string code = str.substr(0, positionCloseBracket);
+	if (!RuleExpr(code))
 	{
 		return false;
 	}
-	str.erase(0, positionThen);
+	str.erase(0, positionCloseBracket + 1);
 
 	if (str.substr(0, THEN_TERMINAL.length()) != THEN_TERMINAL)
 	{

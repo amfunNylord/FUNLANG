@@ -45,6 +45,17 @@ bool READParse(std::string& str)
 		}
 
 		findSymbol = str.find(",");
+		// проверка на то чтобы позиция , была меньше )
+		if (findSymbol != std::string::npos)
+		{
+			size_t positionBracket = str.find(")");
+			if (positionBracket < findSymbol)
+			{
+				findSymbol = std::string::npos;
+			}
+		}
+
+
 
 		if (findSymbol == std::string::npos)
 		{
@@ -139,6 +150,15 @@ bool WRITEParse(std::string& str)
 		}
 
 		findSymbol = str.find(",");
+		// проверка на то чтобы позиция , была меньше )
+		if (findSymbol != std::string::npos)
+		{
+			size_t positionBracket = str.find(")");
+			if (positionBracket < findSymbol)
+			{
+				findSymbol = std::string::npos;
+			}
+		}
 
 		if (findSymbol == std::string::npos)
 		{

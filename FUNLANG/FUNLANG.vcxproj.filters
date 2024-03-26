@@ -41,6 +41,18 @@
     <ClInclude Include="ReadAndWriteParser.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ForParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IFParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WhileParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExpressionParser.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="input_code.txt" />

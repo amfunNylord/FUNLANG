@@ -10,5 +10,14 @@ RAV
 BEGIN
     READ(input, letter);
     WRITE(letter);
+    FOR I := 2 TO 5
+    DO
+      READ(input, letter);
+      WRITE(letter);
+    ENDFOR
+    IF (A <> B) THEN
+      READ(input, letter);
+      WRITE(letter);  
+    FI
 END
 NUF
