@@ -11,7 +11,7 @@ VAR
 	letter : char
 RAV
 BEGIN
-	READ(letter);
+	READ(input, letter);
 	WRITE(a);
 	
 	IF letter = '1' THEN

@@ -70,7 +70,12 @@ bool READParse(std::string& str)
 					PrintSyntaxError(SYNTAX_ERROR_READ, index + findSymbol);
 					return false;
 				}
-
+				str.erase(0, 1);//удаляем)
+				if (str[0] != ';')
+				{
+					return false;
+				}
+				str.erase(0, 1); //удаляем ;
 				break;
 			}
 		}
@@ -160,6 +165,12 @@ bool WRITEParse(std::string& str)
 					return false;
 				}
 
+				str.erase(0, 1); // удаляем)
+				if (str[0] != ';')
+				{
+					return false;
+				}
+				str.erase(0, 1); // удаляем ;
 				break;
 			}
 		}

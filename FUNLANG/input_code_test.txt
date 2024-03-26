@@ -8,6 +8,7 @@ VAR
     de, l : int
 RAV
 BEGIN
-    READ(a)
+    READ(input, letter);
+    WRITE(letter);
 END
 NUF
