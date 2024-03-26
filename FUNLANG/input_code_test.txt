@@ -8,9 +8,6 @@ VAR
     de, l : int
 RAV
 BEGIN
-{
-    ;
-}
-    ;
+    READ(a)
 END
 NUF

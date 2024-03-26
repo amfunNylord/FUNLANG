@@ -16,7 +16,7 @@ void PrintSyntaxError(const std::string& errorMessage, size_t position)
 	std::cout << errorMessage << position << std::endl;
 }
 
-bool ParseRead(std::string& str)
+bool READParse(std::string& str)
 {
 	size_t index = 0;
 	if (str.substr(0, READ_TERMINAL.size()) != READ_TERMINAL)
@@ -91,7 +91,7 @@ bool ParseRead(std::string& str)
 	return true;
 }
 
-bool ParseWrite(std::string& str)
+bool WRITEParse(std::string& str)
 {
 	size_t index = 0;
 	if (str.substr(0, WRITE_TERMINAL.size()) != WRITE_TERMINAL)

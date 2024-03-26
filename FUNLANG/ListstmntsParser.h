@@ -4,6 +4,7 @@
 #include "WhileParser.h"
 #include "ForParser.h"
 #include "IFParser.h"
+#include "ReadAndWriteParser.h"
 
 bool LISTSTMNTSParse(std::string& code);
 
@@ -47,9 +48,9 @@ bool STParse(std::string& code)
 		}
 		code.erase(0, 1);
 	}
-	if (!EMPTYParse(code))
+	if (EMPTYParse(code))
 	{
-		return false;
+		return true;
 	}
 	else if (code.substr(0, 5) == WHILE_START_TERMINAL) // use const
 	{
@@ -58,34 +59,34 @@ bool STParse(std::string& code)
 			return false;
 		}
 	}
-	else if (code.substr(0, 3) == "FOR") // use const
+	else if (code.substr(0, 3) == FOR_TERMINAL) // use const
 	{
 		if (!FORParse(code))
 		{
 			return false;
 		}
 	}
-	//else if (code.substr(0, 2) == "IF") // use const
-	//{
-	//	if (!IFParse(code))
-	//	{
-	//		return false;
-	//	}
-	//}
-	//else if (code.substr(0, 4) == "READ") // use const
-	//{
-	//	if (!READParse(code))
-	//	{
-	//		return false;
-	//	}
-	//}
-	//else if (code.substr(0, 5) == "WRITE") // use const
-	//{
-	//	if (!WRITEParse(code))
-	//	{
-	//		return false;
-	//	}
-	//}
+	else if (code.substr(0, 2) == "IF") // use const
+	{
+		if (!IFParse(code))
+		{
+			return false;
+		}
+	}
+	else if (code.substr(0, 4) == "READ") // use const
+	{
+		if (!READParse(code))
+		{
+			return false;
+		}
+	}
+	else if (code.substr(0, 5) == "WRITE") // use const
+	{
+		if (!WRITEParse(code))
+		{
+			return false;
+		}
+	}
 	//else if (!ASSIGNMENTParse(code)) // вывод ошибки если просто текст то это ошибка что ожидалось st, а если неправильно написан assignment другая ошибка надо вырулить
 	//{
 	//	return false;
